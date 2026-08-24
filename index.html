@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Girlfriend Analysis System™</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #050505;
+  color: #00ff88;
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.terminal {
+  width: 100%;
+  max-width: 650px;
+  border: 1px solid #00ff88;
+  padding: 25px;
+  background: #080808;
+  box-shadow: 0 0 30px #00ff8833;
+}
+
+.top {
+  border-bottom: 1px solid #00ff88;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+#output {
+  min-height: 250px;
+  line-height: 1.8;
+}
+
+button {
+  background: #00ff88;
+  color: #050505;
+  border: none;
+  padding: 14px 20px;
+  font-family: monospace;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+.warning {
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+.stats {
+  line-height: 2;
+  margin: 25px 0;
+}
+
+.love {
+  text-align: center;
+  font-size: 24px;
+}
+
+.heart {
+  position: fixed;
+  animation: fall 3s linear forwards;
+  font-size: 30px;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-50px);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="terminal">
+
+<div class="top">
+GIRLFRIEND ANALYSIS SYSTEM™
+</div>
+
+<div id="output"></div>
+
+<button id="startBtn">
+▶ AVVIA ANALISI
+</button>
+
+<div id="final" class="hidden">
+
+<div class="warning">
+⚠ ANALISI COMPLETATA ⚠
+</div>
+
+<h1>SOGGETTO PERICOLOSO</h1>
+
+<p>
+Dopo un'attenta analisi scientifica è stato determinato che
+il soggetto presenta livelli anormalmente elevati di:
+</p>
+
+<div class="stats">
+Capacità di far ingelosire: <b>1000%</b><br>
+Capacità di piacere: <b>∞</b><br>
+Capacità di far impazzire: <b>147%</b><br>
+Bellezza: <b>VALORE NON CALCOLABILE</b>
+
+</div>
+
+<p class="love">
+
+Diagnosi finale:<br><br>
+
+<strong>TI AMO. ❤️</strong>
+
+</p>
+
+<p>
+
+La disinstallazione della (non) fidanzata non è disponibile.
+
+<br><br>
+
+Motivo:
+
+<br>
+
+Denise ha già perso completamente la testa.
+
+</p>
+
+<button onclick="hearts()">
+❤️ ACCETTA IL DESTINO
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const output = document.getElementById("output");
+
+const button = document.getElementById("startBtn");
+
+const final = document.getElementById("final");
+
+const analyses = [
+
+"Avvio scansione del soggetto...",
+  "Identificazione nom fidanzata... COMPLETATA ✓",
+  "Analisi della bellezza... ERRORE: valore fuori scala",
+  "Analisi dell'intelligenza... 1.9%",
+  "Analisi della capacità di rompere il cazzo... 147%",
+  "Analisi della capacità di far innamorare... 1000%",
+  "Analisi del rischio per il cuore di deni... ⚠ CRITICO",
+  "Ricerca di eventuali difetti...",
+  "ERRORE: troppi per essere elencati.",
+  "Importanza dei difetti: 0%",
+  "",
+  "Calcolo compatibilità...",
+  "RISULTATO: 1000000%",
+  "",
+  "Preparazione diagnosi finale..."
+
+];
+
+button.addEventListener("click", () => {
+
+button.style.display = "none";
+
+let i = 0;
+
+function next() {
+
+if (i < analyses.length) {
+
+output.innerHTML +=
+"> " + analyses[i] + "<br>";
+
+i++;
+
+setTimeout(next, 600);
+
+} else {
+
+setTimeout(() => {
+
+final.classList.remove("hidden");
+
+final.scrollIntoView({
+behavior: "smooth"
+});
+
+}, 1000);
+
+}
+
+}
+
+next();
+
+});
+
+function hearts() {
+
+for (let i = 0; i < 40; i++) {
+
+const heart =
+document.createElement("div");
+
+heart.className = "heart";
+
+heart.innerHTML =
+["❤️","💗","💖","💕"]
+[Math.floor(Math.random() * 4)];
+
+heart.style.left =
+Math.random() * 100 + "vw";
+
+document.body.appendChild(heart);
+
+setTimeout(() => {
+heart.remove();
+}, 4000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
